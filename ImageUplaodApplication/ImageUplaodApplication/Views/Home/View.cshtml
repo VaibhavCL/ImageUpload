@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ImageUplaodApplication.Models.ContentViewModel>
+
+@{
+    ViewBag.Title = "View";
+}
+
+
+<div align="right" onclick="imageAdd()">
+    <img src="~/Content/Image/icons8-plus-26.png" />
+</div>
+<table>
+    <tr>
+        <td>
+            @{ 
+                foreach (var item in Model)
+                {
+                    <div>
+                        <dl>
+                            <dd>
+                                <img src="@Url.Content(item.ImagePath)" height="200" />
+                            </dd>
+                            <dd>
+                                @item.ImagePath
+                            </dd>
+                        </dl>
+                    </div>
+                }
+            }
+        </td>
+    </tr>
+</table>
+
+<script>
+    function imageAdd() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Add","Image")',
+            success: function (resultData) {
+                window.location.href = '@Url.Action("Add","Image")';
+            }
+        });
+    }
+</script>

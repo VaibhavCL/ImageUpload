@@ -1,0 +1,18 @@
+﻿@model ImageUplaodApplication.Models.ContentViewModel
+<h2>FileUpload</h2>
+
+
+
+
+@using (Html.BeginForm("Index", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<input name="uploadFile" type="file" />
+<input type="submit" value="Upload File" />
+}
+
+
+@if (!string.IsNullOrEmpty(Model))
+{
+    <img src="@Url.Content(Model)" alt="" />
+}
+    
